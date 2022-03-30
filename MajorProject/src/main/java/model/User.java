@@ -14,6 +14,8 @@ public class User {
 	private String userHobby;
 	private String userMobile;
 	private InputStream imageData;
+	
+	private int relativeId;
 	private boolean isAdmin;
 
 	public int getUserId() {
@@ -104,11 +106,21 @@ public class User {
 		this.isAdmin = isAdmin;
 	}
 
+	public int getRelativeId() {
+		return relativeId;
+	}
+
+	public void setRelativeId(int relativeId) {
+		this.relativeId = relativeId;
+	}
+
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userFName=" + userFName + ", userLName=" + userLName + ", userEmail="
 				+ userEmail + ", userPass=" + userPass + ", userCPass=" + userCPass + ", userGender=" + userGender
-				+ ", userHobby=" + userHobby + ", userMobile=" + userMobile + ", isAdmin=" + isAdmin + "]";
+				+ ", userHobby=" + userHobby + ", userMobile=" + userMobile + ", imageData=" + imageData
+				+ ", relativeId=" + relativeId + ", isAdmin=" + isAdmin + "]";
 	}
 
+	
 }

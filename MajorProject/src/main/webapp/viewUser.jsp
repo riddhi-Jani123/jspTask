@@ -45,14 +45,14 @@
 			<!-- Divider -->
 			<hr class="sidebar-divider">
 
-			<li class="nav-item"><a class="nav-link" href="charts.html">
+			<li class="nav-item"><a class="nav-link" href="viewProfile">
 					<i class="fas fa-fw fa-chart-area"></i> <span>View Profile</span>
 			</a></li>
 			<!-- Divider -->
 			<hr class="sidebar-divider">
 
 
-			<li class="nav-item"><a class="nav-link" href="charts.html">
+			<li class="nav-item"><a class="nav-link" href="editProfile">
 					<i class="fas fa-fw fa-chart-area"></i> <span>Edit Profile</span>
 			</a></li>
 			<!-- Divider -->
@@ -60,13 +60,13 @@
 
 
 			<!-- Nav Item - Tables -->
-			<li class="nav-item"><a class="nav-link" href="tables.html">
+			<li class="nav-item"><a class="nav-link" href="DisplayUser">
 					<i class="fas fa-fw fa-table"></i> <span>View User</span>
 			</a></li>
 			<!-- Divider -->
 			<hr class="sidebar-divider">
 
-			<li class="nav-item"><a class="nav-link" href="charts.html">
+			<li class="nav-item"><a class="nav-link" href="addUser.jsp">
 					<i class="fas fa-fw fa-chart-area"></i> <span>Add User</span>
 			</a></li>
 			<!-- Divider -->

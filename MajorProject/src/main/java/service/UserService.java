@@ -13,4 +13,11 @@ public interface UserService {
 	public int register(User u) throws  SQLException;
 	public List<User> getUserName();
 
+	public int getId();
+	
+	public List<User> getData();
+	
+	public int updatePass(User user);
+	
+	public List<User> viewAdmin(User user);
 }

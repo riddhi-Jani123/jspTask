@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@ page import="model.User"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,7 +63,7 @@
 
 
 			<!-- Nav Item - Tables -->
-			<li class="nav-item"><a class="nav-link" href="tables.html">
+			<li class="nav-item"><a class="nav-link" href="DisplayUser">
 					<i class="fas fa-fw fa-table"></i> <span>View User</span>
 			</a></li>
 			<!-- Divider -->
@@ -103,8 +106,25 @@
 
 						<!-- Page Heading -->
 						<div
-							class="d-sm-flex align-items-center justify-content-between mb-4">
-							<h1 class="h3 mb-0 text-gray-800">Welcome</h1>
+							class="align-items-center justify-content-between mb-4">
+							<c:forEach items="${admin}" var="user">
+									
+							<h3> First Name: </h3> 
+							<h3> ${user.userFName} </h3><br><br>
+							<h3> Last Name : </h3>
+							<h3> ${user.userLName }</h3><br><br>
+							<h3>  Email </h3>
+							<h3> ${user.userEmail } </h3><br><br>
+							<h3> Password: </h3>
+							<h3> ${user.userPass }</h3><br><br>
+							<h3> Gender: </h3>
+							<h3> ${user.userGender }</h3><br><br>
+							<h3> Hobby:</h3>
+							<h3> ${user.userHobby } </h3><br><br>
+							<h3> Mobile No : </h3>
+							<h3> ${user.userMobile }</h3><br><br>
+							
+							</c:forEach>
 
 						</div>
 					</div>

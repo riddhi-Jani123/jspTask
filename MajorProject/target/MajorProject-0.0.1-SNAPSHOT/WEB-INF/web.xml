@@ -38,4 +38,34 @@
     <servlet-name>getUserName</servlet-name>
     <url-pattern>/getUserName</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DisplayUser</display-name>
+    <servlet-name>DisplayUser</servlet-name>
+    <servlet-class>controller.DisplayUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DisplayUser</servlet-name>
+    <url-pattern>/DisplayUser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ForgotPass</display-name>
+    <servlet-name>ForgotPass</servlet-name>
+    <servlet-class>controller.ForgotPass</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ForgotPass</servlet-name>
+    <url-pattern>/ForgotPass</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewAdmin</display-name>
+    <servlet-name>ViewAdmin</servlet-name>
+    <servlet-class>controller.ViewAdmin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewAdmin</servlet-name>
+    <url-pattern>/ViewAdmin</url-pattern>
+  </servlet-mapping>
 </web-app>

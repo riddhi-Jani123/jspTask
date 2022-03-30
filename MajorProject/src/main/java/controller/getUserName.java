@@ -2,12 +2,18 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import model.Address;
+import model.User;
+import service.AddressServiceImpl;
 import service.UserServiceImpl;
 
 /**
@@ -39,9 +45,51 @@ public class getUserName extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		try {
+			
+			
+			String id = request.getParameter("userId");
+			
+			System.out.println("id "+id);
+			
 			UserServiceImpl u = new UserServiceImpl();
-			u.getUserName();
-		} catch (ClassNotFoundException e) {
+			List<User> user  = u.getUserName();
+			System.out.println(user);
+			HttpSession session = request.getSession();
+			session.setAttribute("users", user);
+			
+			
+			
+			if(id!=null) {
+			
+				
+			session.setAttribute("uId", id);
+			AddressServiceImpl address = new AddressServiceImpl();
+			List<Address> addr = address.getData(Integer.parseInt(id));
+			System.out.println("address" +addr);
+			Address addrr = addr.get(0);
+			System.out.println(addrr.getAddressType());
+			/*if(addrr.getAddressType().equals("Home"))
+			{*/
+				
+				
+				//System.out.println("address id "+addrr.getAddressId());
+				session.setAttribute("addrID", addrr.getAddressId());
+				session.setAttribute("addr", addr);
+				
+					
+			//}
+			/*
+			 * else { session.setAttribute("addrID", addrr.getAddressId());
+			 * System.out.println("Another Address Type");
+			 * 
+			 * } }
+			 */
+			}
+			RequestDispatcher req = request.getRequestDispatcher("register.jsp");
+				req.forward(request, response);
+		
+		
+		}catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {

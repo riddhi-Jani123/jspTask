@@ -45,7 +45,7 @@
 			<!-- Divider -->
 			<hr class="sidebar-divider">
 
-			<li class="nav-item"><a class="nav-link" href="viewProfile.jsp">
+			<li class="nav-item"><a class="nav-link" href="ViewAdmin">
 					<i class="fas fa-fw fa-chart-area"></i> <span>View Profile</span>
 			</a></li>
 			<!-- Divider -->
@@ -60,7 +60,7 @@
 
 
 			<!-- Nav Item - Tables -->
-			<li class="nav-item"><a class="nav-link" href="tables.html">
+			<li class="nav-item"><a class="nav-link" href="DisplayUser">
 					<i class="fas fa-fw fa-table"></i> <span>View User</span>
 			</a></li>
 			<!-- Divider -->

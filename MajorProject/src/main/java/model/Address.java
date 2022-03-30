@@ -4,10 +4,11 @@ public class Address {
 	
 	private  int addressId;
 	private  int userId;
+	private int  length;
 	private  String sAddress;
 	private  String city;
 	private  String state;
-	private  int pincode;
+	private  String pincode;
 	private String addressType;
 	
 	public int getAddressId() {
@@ -25,8 +26,8 @@ public class Address {
 	public String getsAddress() {
 		return sAddress;
 	}
-	public void setsAddress(String sAddress) {
-		this.sAddress = sAddress;
+	public void setsAddress(String sAddress2) {
+		this.sAddress = sAddress2;
 	}
 	public String getCity() {
 		return city;
@@ -40,10 +41,10 @@ public class Address {
 	public void setState(String state) {
 		this.state = state;
 	}
-	public int getPincode() {
+	public String getPincode() {
 		return pincode;
 	}
-	public void setPincode(int pincode) {
+	public void setPincode(String pincode) {
 		this.pincode = pincode;
 	}
 	public String getAddressType() {
@@ -52,11 +53,20 @@ public class Address {
 	public void setAddressType(String addressType) {
 		this.addressType = addressType;
 	}
+	public int getLength() {
+		return length;
+	}
+	public void setLength(int length) {
+		this.length = length;
+	}
 	@Override
 	public String toString() {
-		return "Address [addressId=" + addressId + ", userId=" + userId + ", sAddress=" + sAddress + ", city=" + city
-				+ ", state=" + state + ", pincode=" + pincode + ", addressType=" + addressType + "]";
+		return "Address [addressId=" + addressId + ", userId=" + userId + ", length=" + length + ", sAddress="
+				+ sAddress + ", city=" + city + ", state=" + state + ", pincode=" + pincode + ", addressType="
+				+ addressType + "]";
 	}
+	
+	
 	
 	
 	

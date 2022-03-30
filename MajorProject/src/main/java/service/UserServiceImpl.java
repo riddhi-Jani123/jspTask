@@ -39,4 +39,32 @@ public class UserServiceImpl implements UserService{
 		return list;
 	}
 
+	public int getId() {
+		// TODO Auto-generated method stub
+		int id = l.getId();
+		return id;
+	}
+
+	public List<User> getData() {
+		// TODO Auto-generated method stub
+		
+		List<User> list = l.getData();
+		
+		return list;
+	}
+
+	public int updatePass(User user) {
+		// TODO Auto-generated method stub
+		int result = l.updatePass(user);
+		return 0;
+	}
+
+	public List<User> viewAdmin(User user) {
+		// TODO Auto-generated method stub
+		
+		List<User> list = l.viewAdmin(user);
+		
+		return list;
+	}
+
 }

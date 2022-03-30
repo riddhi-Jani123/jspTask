@@ -3,12 +3,15 @@
 /home/root03/eclipse-workspace/MajorProject/src/main/java/controller/getUserName.java
 /home/root03/eclipse-workspace/MajorProject/src/main/java/dao/AddressDao.java
 /home/root03/eclipse-workspace/MajorProject/src/main/java/model/Address.java
+/home/root03/eclipse-workspace/MajorProject/src/main/java/controller/ViewAdmin.java
 /home/root03/eclipse-workspace/MajorProject/src/main/java/service/AddressService.java
 /home/root03/eclipse-workspace/MajorProject/src/main/java/utility/DatabaseConnection.java
 /home/root03/eclipse-workspace/MajorProject/src/main/java/service/UserService.java
 /home/root03/eclipse-workspace/MajorProject/src/main/java/service/UserServiceImpl.java
+/home/root03/eclipse-workspace/MajorProject/src/main/java/controller/DisplayUser.java
 /home/root03/eclipse-workspace/MajorProject/src/main/java/dao/UserDao.java
 /home/root03/eclipse-workspace/MajorProject/src/main/java/dao/AddressDaoImpl.java
+/home/root03/eclipse-workspace/MajorProject/src/main/java/controller/ForgotPass.java
 /home/root03/eclipse-workspace/MajorProject/src/main/java/controller/Login.java
 /home/root03/eclipse-workspace/MajorProject/src/main/java/controller/Register.java
 /home/root03/eclipse-workspace/MajorProject/src/main/java/model/User.java

@@ -55,8 +55,7 @@ public class Login extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		logger.info("In do post");
-		BasicConfigurator.configure();  
+		System.out.println("in do  post");
 		 
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
@@ -65,23 +64,22 @@ public class Login extends HttpServlet {
 		user.setUserEmail(request.getParameter("email"));
 		user.setUserPass(request.getParameter("password"));
 		
-		 logger.info(user.getUserEmail());  
-		 logger.info(user.getUserPass());  
+		System.out.println("email "+user.getUserEmail());
 		
 		HttpSession session = request.getSession();
-
+		session.setAttribute("email", request.getParameter("email"));		
 		try {
 			UserServiceImpl u = new UserServiceImpl();
 			boolean result = u.login(user);
-			logger.info(user);
-			logger.info(result);
-			result = true;
+			System.out.println("result "+ result );
 			
 
 			if (result) {
 
 				if (user.isAdmin()) {
+					System.out.println("into admin page ");
 					response.sendRedirect("adminDashboard.jsp");
+				
 				} else {
 
 					response.sendRedirect("userDashboard.jsp");

@@ -1,4 +1,6 @@
+controller/DisplayUser.class
 dao/AddressDaoImpl.class
+controller/ViewAdmin.class
 controller/Login.class
 utility/DatabaseConnection.class
 controller/getUserName.class
@@ -10,5 +12,6 @@ service/UserService.class
 model/User.class
 dao/UserDao.class
 service/AddressService.class
+controller/ForgotPass.class
 dao/AddressDao.class
 controller/Register.class

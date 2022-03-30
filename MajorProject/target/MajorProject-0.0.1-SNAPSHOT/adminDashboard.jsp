@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,8 +26,7 @@
 			id="accordionSidebar">
 			<!-- Nav Item - Charts -->
 			<!-- Sidebar - Brand -->
-			<a
-				class="sidebar-brand d-flex align-items-center justify-content-center"
+			<a class="sidebar-brand d-flex align-items-center justify-content-center"
 				href="index.html">
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-laugh-wink"></i>
@@ -45,7 +45,7 @@
 			<!-- Divider -->
 			<hr class="sidebar-divider">
 
-			<li class="nav-item"><a class="nav-link" href="viewProfile.jsp">
+			<li class="nav-item"><a class="nav-link" href="ViewAdmin">
 					<i class="fas fa-fw fa-chart-area"></i> <span>View Profile</span>
 			</a></li>
 			<!-- Divider -->
@@ -60,7 +60,7 @@
 
 
 			<!-- Nav Item - Tables -->
-			<li class="nav-item"><a class="nav-link" href="tables.html">
+			<li class="nav-item"><a class="nav-link" href="DisplayUser">
 					<i class="fas fa-fw fa-table"></i> <span>View User</span>
 			</a></li>
 			<!-- Divider -->

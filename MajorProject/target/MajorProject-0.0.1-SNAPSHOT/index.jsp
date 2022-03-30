@@ -51,7 +51,7 @@
 									
 										<h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
 									</div>
-									<form class="user" method="post" action="Login" enctype="multipart/form-data">
+									<form class="user" method="post" action="Login" >
 										<div class="form-group">
 											<input name="email" type="email"
 												class="form-control form-control-user"
@@ -76,11 +76,11 @@
 									</form>
 									<hr>
 									<div class="text-center">
-										<a class="small" href="forgot-password.html">Forgot
+										<a class="small" href="forgot-password.jsp">Forgot
 											Password?</a>
 									</div>
 									<div class="text-center">
-										<a class="small" href="register.jsp">Create an Account!</a>
+										<a class="small" href="getUserName">Create an Account!</a>
 									</div>
 								</div>
 							</div>
