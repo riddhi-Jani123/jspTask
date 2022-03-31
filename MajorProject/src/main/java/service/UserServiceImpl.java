@@ -6,11 +6,12 @@ import java.util.List;
 
 import javax.sql.rowset.serial.SerialException;
 
+import dao.UserDao;
 import dao.UserDaoImpl;
 import model.User;
 
 public class UserServiceImpl implements UserService{
-	UserDaoImpl l = null;
+	UserDao l = null;
 	public UserServiceImpl() throws ClassNotFoundException, SQLException{
 		
 	l = new UserDaoImpl();

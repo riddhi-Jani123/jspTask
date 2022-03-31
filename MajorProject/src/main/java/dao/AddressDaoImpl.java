@@ -7,10 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import model.Address;
 import model.User;
 import utility.DatabaseConnection;
+
+
 
 public class AddressDaoImpl implements AddressDao {
 	
@@ -19,6 +20,8 @@ public class AddressDaoImpl implements AddressDao {
 		
 		conn = DatabaseConnection.getInstance().getConnection();
 	}
+	
+	
 
 	public int addData(int id, Address a) throws SQLException {
 		// TODO Auto-generated method stub
@@ -26,10 +29,10 @@ public class AddressDaoImpl implements AddressDao {
 		int result =0;
 		int addID =  a.getAddressId();
 		System.out.println("address id " + addID);
-		
 		int n = a.getLength();
 		
 		System.out.println("length "+n);
+		
 		for (int i=1;i<n;i++)
 		{
 			
@@ -251,12 +254,80 @@ public class AddressDaoImpl implements AddressDao {
 				e.printStackTrace();
 			}
 			
-			
-			
-		
-			
+	
 			
 		return list;
+	}
+
+
+
+	public int addAddress(int id, Address a) throws SQLException {
+		// TODO Auto-generated method stub
+		int result =0;
+		int addID =  a.getAddressId();
+		System.out.println("address id " + addID);
+		int n = a.getLength();
+		
+		System.out.println("length "+n);
+		
+		for (int i=0;i<n;i++)
+		{
+			
+		PreparedStatement pstmt = conn
+				.prepareStatement("Insert Into  Address (address, city, state, pincode,addressType,userID)"
+										+ "VALUES (?,?,?,?,?,?)" );
+				
+	
+	
+		System.out.println("addr " + a.getAddressType());
+	
+			try {
+			
+				String str = a.getsAddress();
+				String[] arrOfStr = str.split(" ");
+				 
+		     	            
+				pstmt.setString(1,arrOfStr[i]);
+		        
+		        String str1 = a.getCity();
+				String[] arrOfStr1 = str1.split(" ");
+				 
+		        
+				pstmt.setString(2, arrOfStr1[i]);
+		        
+		        String str2 = a.getState();
+				String[] arrOfStr2 = str2.split(" ");
+				 
+		        pstmt.setString(3, arrOfStr2[i]);
+		        
+		        String str3 = a.getPincode();
+				String[] arrOfStr3 = str3.split(" ");
+				 				
+				pstmt.setString(4, arrOfStr3[i]);
+	        
+		        String str4 = a.getAddressType();
+				String[] arrOfStr4 = str4.split(" ");
+				 
+		        
+				pstmt.setString(5, arrOfStr4[i]);
+				
+				pstmt.setInt(6, id);
+				
+				result = pstmt.executeUpdate();
+				
+				System.out.println(result);
+		
+
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		
+		}
+	
+		return result;
 	}
 
 	

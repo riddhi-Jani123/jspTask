@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.User;
+import service.UserService;
 import service.UserServiceImpl;
 
 /**
@@ -44,7 +46,7 @@ public class DisplayUser extends HttpServlet {
 		
 		
 		try {
-			UserServiceImpl user = new UserServiceImpl();
+			UserService user = new UserServiceImpl();
 			List<User> list = user.getData();
 			
 			System.out.println(list);

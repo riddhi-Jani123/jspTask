@@ -15,5 +15,7 @@ public interface AddressService {
 	public int updateData(int id ,Address a ) throws SQLException; 
 	
 	public List<Address> getId();
+	
+	public int addAddress(int id ,Address a ) throws SQLException;
 
 }

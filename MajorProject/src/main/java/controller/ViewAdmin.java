@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.User;
+import service.UserService;
 import service.UserServiceImpl;
 
 /**
@@ -50,8 +51,9 @@ public class ViewAdmin extends HttpServlet {
 		
 		user.setUserEmail(email);
 		
+		
 		try {
-			UserServiceImpl u = new UserServiceImpl();
+			UserService u = new UserServiceImpl();
 			
 			List<User> list  = u.viewAdmin(user);
 			

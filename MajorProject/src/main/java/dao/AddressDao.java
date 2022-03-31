@@ -16,5 +16,6 @@ public interface AddressDao {
 	
 	public List<Address> getId();
 	
+	public int addAddress(int id ,Address a ) throws SQLException;
 
 }

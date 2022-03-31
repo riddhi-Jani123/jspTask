@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.User;
+import service.UserService;
 import service.UserServiceImpl;
 
 /**
@@ -48,7 +49,7 @@ public class ForgotPass extends HttpServlet {
 		
 		
 		try {
-			UserServiceImpl u = new UserServiceImpl();
+			UserService u = new UserServiceImpl();
 			int result  = u.updatePass(user);
 			System.out.println(result);
 			RequestDispatcher req = request.getRequestDispatcher("index.jsp");

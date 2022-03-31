@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.logging.impl.Log4JLogger;
 
 import model.User;
+import service.UserService;
 import service.UserServiceImpl;
 
 /**
@@ -69,7 +70,7 @@ public class Login extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("email", request.getParameter("email"));		
 		try {
-			UserServiceImpl u = new UserServiceImpl();
+			UserService u = new UserServiceImpl();
 			boolean result = u.login(user);
 			System.out.println("result "+ result );
 			

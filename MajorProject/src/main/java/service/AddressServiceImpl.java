@@ -3,6 +3,7 @@ package service;
 import java.sql.SQLException;
 import java.util.List;
 
+import dao.AddressDao;
 import dao.AddressDaoImpl;
 import dao.UserDaoImpl;
 import model.Address;
@@ -10,7 +11,7 @@ import model.User;
 
 public class AddressServiceImpl implements AddressService{
 	
-	AddressDaoImpl l = null;
+	AddressDao l = null;
 	
 	public AddressServiceImpl() {
 		
@@ -33,6 +34,7 @@ public class AddressServiceImpl implements AddressService{
 		return result;
 	}
 
+
 	public List<Address> getData(int id) {
 		// TODO Auto-generated method stub
 		
@@ -51,6 +53,12 @@ public class AddressServiceImpl implements AddressService{
 		
 		List<Address> list = l.getId();
 		return list;
+	}
+
+	public int addAddress(int id, Address a) throws SQLException {
+		// TODO Auto-generated method stub
+		int result = l.addAddress(id, a);
+		return result;
 	}
 
 }

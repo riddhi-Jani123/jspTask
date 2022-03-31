@@ -25,7 +25,9 @@ import javax.servlet.http.Part;
 
 import model.Address;
 import model.User;
+import service.AddressService;
 import service.AddressServiceImpl;
+import service.UserService;
 import service.UserServiceImpl;
 import utility.DatabaseConnection;
 
@@ -157,9 +159,9 @@ public class Register extends HttpServlet {
 
 		try {
 
-			UserServiceImpl u = new UserServiceImpl();
-
-			AddressServiceImpl a = new AddressServiceImpl();
+			UserService u = new UserServiceImpl();
+			
+			AddressService a = new AddressServiceImpl();
 
 			// int id = u.getId();
 			// user.setUserId(id);
@@ -173,16 +175,16 @@ public class Register extends HttpServlet {
 					
 					if((Integer) session.getAttribute("addrID")== null)
 					{
-						/*
-						 * int aId = (Integer) session.getAttribute("addrID"); System.out.println(aId);
-						 * address.setAddressId(aId);
-						 */
+						
+						a.addAddress(result, address);
+					
 				
 						
 						System.out.println("Address id not assigned ");
 					}
 					else {
-						 int aId = (Integer) session.getAttribute("addrID"); System.out.println(aId);
+						 int aId = (Integer) session.getAttribute("addrID"); 
+						 System.out.println(aId);
 						 address.setAddressId(aId);
 					user.setRelativeId(Integer.parseInt(id));
 					int Id = 0;
@@ -205,12 +207,9 @@ public class Register extends HttpServlet {
 
 			response.sendRedirect("index.jsp");
 		}
-
-		catch (
-
-		ClassNotFoundException e) { // TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) { // TODO Auto-generated catch
+		 catch (ClassNotFoundException e) { // TODO Auto-generated catch block
+		  e.printStackTrace(); }
+		  catch (SQLException e) { // TODO Auto-generated catch
 			e.printStackTrace();
 		}
 

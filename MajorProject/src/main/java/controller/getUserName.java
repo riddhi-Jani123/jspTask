@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -13,7 +14,9 @@ import javax.servlet.http.HttpSession;
 
 import model.Address;
 import model.User;
+import service.AddressService;
 import service.AddressServiceImpl;
+import service.UserService;
 import service.UserServiceImpl;
 
 /**
@@ -51,7 +54,7 @@ public class getUserName extends HttpServlet {
 			
 			System.out.println("id "+id);
 			
-			UserServiceImpl u = new UserServiceImpl();
+			UserService u = new UserServiceImpl();
 			List<User> user  = u.getUserName();
 			System.out.println(user);
 			HttpSession session = request.getSession();
@@ -63,9 +66,10 @@ public class getUserName extends HttpServlet {
 			
 				
 			session.setAttribute("uId", id);
-			AddressServiceImpl address = new AddressServiceImpl();
+			AddressService address = new AddressServiceImpl();
 			List<Address> addr = address.getData(Integer.parseInt(id));
 			System.out.println("address" +addr);
+			if(!addr.isEmpty()) {
 			Address addrr = addr.get(0);
 			System.out.println(addrr.getAddressType());
 			/*if(addrr.getAddressType().equals("Home"))
@@ -76,7 +80,7 @@ public class getUserName extends HttpServlet {
 				session.setAttribute("addrID", addrr.getAddressId());
 				session.setAttribute("addr", addr);
 				
-					
+			}	
 			//}
 			/*
 			 * else { session.setAttribute("addrID", addrr.getAddressId());

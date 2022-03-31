@@ -4,6 +4,9 @@
 <%@ page import="model.User"%>
 <%@ page import="model.Address"%>
 
+<% String userId = (String) session.getAttribute("uId"); %>
+
+<%= userId %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
@@ -23,6 +26,31 @@
 
 <title>Home Page</title>
 
+<style>
+
+label.error{
+
+
+color:red;
+font-size:1rem;
+width:100%;
+}
+
+#rm[]{
+
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #d1d3e2;
+    border-radius: 2px;
+    paddin: 5px;
+
+}
+form.user .form-control-user{
+
+
+width:100%;
+}
+</style>
 <!-- Custom fonts for this template-->
 <link href="assets/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css">
@@ -31,19 +59,22 @@
 	rel="stylesheet">
 
 <!-- Custom styles for this template-->
+
 <link href="assets/css/sb-admin-2.min.css" rel="stylesheet">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"> </script>  
 <script>
+
 $(document).ready(function(){
 	
 	
+	
 	$(".add_item").click(function(e){
-		//alert("hello"); 
+
 		
 		
 		e.preventDefault();
-		//var i = $('input').size() + 1;
+	
 		$("#show_item").append(`
 				
 				<div id="rm[]" name="limit[]">
@@ -117,39 +148,126 @@ $(document).ready(function(){
 		  }); 
 	
 	
-	    
-	 	
-	    	
-	    	/*  $('#fname').hide();   
-	 	    let fnameError = true;
-	 	    $('#exampleFirstName').keyup(function () {
-	 	        validateFirstName();
-	 	    });
-	 	    
-	 	    function validateFirstName() {
-	 	        let firstName = $('#exampleFirstName').val();
-	 	        if (firstName.length == '') {
-	 	        $('#exampleFirstName').show();
-	 	        fnameError = false;
-	 	            return false;
-	 	        }
-	 	       
-	 	      }
-	 	    
-	 	$('#submit').click(function () {
-	 		  validateFirstName();
-	 	        
-	 	        if ((fnameError == true) {
-	 	            return true;
-	 	        } else {
-	 	            return false;
-	 	        }
-	 	    }); */
-	    	 
-	    
-	
-	
-})
+	 $("#form-validate").validate(
+			 {
+				 
+				    rules: {
+				    	firstName : {
+				        required: true,
+				        minlength: 3
+				      },
+				    lname:{
+				    	  required: true,
+				    	  minlength: 3
+				      } ,
+				     email: {
+					        required: true,
+					        email: true
+					      },
+					  mNo:{
+					    	  
+				    	  required: true,
+				    	  number: true,
+				    	  minlength:10,
+				    	  maxlength:10
+					  
+					  } ,
+					  pass:{
+						  required: true,
+						  minlength: 8
+						
+						  
+					  },
+					  cpass:{
+						  
+						  required:true,
+						  equalTo: '[name="pass"]'
+					  },
+					  
+					  "pin[]":{
+						  
+						  number:true
+					  },
+					  
+					  gender:{
+						  
+						  required:true
+					  },
+					  checked:{
+						  
+						  required:true
+					  }
+				     /*  age: {
+				        required: true,
+				        number: true,
+				        min: 18
+				      },
+				      email: {
+				        required: true,
+				        email: true
+				      },
+				      weight: {
+				        required: {
+				          depends: function(elem) {
+				            return $("#age").val() > 50
+				          }
+				        },
+				        number: true,
+				        min: 0
+				      } */
+				    },
+				    messages : {
+				    	firstName: {
+				    		required:"First Name is required", 
+				    		
+				        minlength: "First Name should be at least 3 characters"
+				      },
+				       lname:{
+				    	   required:"Last Name is required", 
+				    	  minlength: "Last Name should be at least 3 characters"
+				      } ,
+				      
+				      email: {
+				    	  required:"Email  is required", 
+					        email: "The email should be in the format: abc@domain.tld"
+					      
+				      },
+				      mNo:{
+				    	  required:"Mobile Number is required", 
+				    	  number:"Only Number allowed"
+				    	 
+				    	  
+				      } ,
+				      pass:{
+				    	  required:"Password is required", 
+				    	  minlegth:"Password should be atleast 8 character"
+				      },
+				      "pin[]":{
+				    	  
+				    	  number:"Please enter number only "
+				      },
+				      cpass:{
+				    	  
+				    	  required:"Confirm Password is required", 
+				    	  equalTo:"Password and Confirm Password must be same "
+				      }
+				     /*  age: {
+				        required: "Please enter your age",
+				        number: "Please enter your age as a numerical value",
+				        min: "You must be at least 18 years old"
+				      },
+				      email: {
+				        email: "The email should be in the format: abc@domain.tld"
+				      },
+				      weight: {
+				        required: "People with age over 50 have to enter their weight",
+				        number: "Please enter your weight as a numerical value"
+				      } */
+				    }
+				  });
+	 
+});
+	 
 </script>
 
 </head>
@@ -167,36 +285,40 @@ $(document).ready(function(){
 							<div class="text-center">
 								<h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
 							</div>
-							<form class="user" method="post" action="Register" >
+							<form class="user" method="post" action="Register" id="form-validate">
 
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
+									
 										<input type="text" class="form-control form-control-user"
 											id="exampleFirstName" name="firstName"
-											placeholder="First Name">
-											<!-- <small id="fname" > First name is required  </small> -->
+											placeholder="First Name" >
+											
+											
+											
 									<!-- 	<wl:validator fieldToValidate="firstName"
 											validatorClass="weblogicx.jsp.tags.validators.RequiredFieldValidator"
 											errorMessage="User name is a required field!">
 											<img src=images/warning.gif> This is a required field!
  										</wl:validator> -->
+ 										
 									</div>
 									<div class="col-sm-6">
 										<input type="text" class="form-control form-control-user"
-											id="exampleLastName" name="lname" placeholder="Last Name">
+											id="exampleLastName" name="lname" placeholder="Last Name" >
 											<!-- <small id="lname" > Last name is required  </small> -->
 									</div>
 								</div>
 								<div class="form-group">
 									<input type="email" class="form-control form-control-user"
 										id="exampleInputEmail" name="email"
-										placeholder="Email Address">
+										placeholder="Email Address" >
 										<!-- <small id="email" > Email is required  </small> -->
 								</div>
 								<div class="form-group">
 
 									<input type="tel" class="form-control form-control-user"
-										id="mNo" name="mNo" placeholder="mobile no">
+										id="mNo" name="mNo" placeholder="mobile no" >
 										<!-- <small id="mobile" > Mobile Number is required  </small> -->
 
 								</div>
@@ -222,12 +344,12 @@ $(document).ready(function(){
 										<c:forEach items="${users}" var="user">
 											<option value="" selected="selected" hidden="hidden">Choose
 												relative</option>
-											<option id="opt" name="id" value="${user.userId}">
+											<option id="${user.userId}" name="id" value="${user.userId}" >
+											
 												${user.userFName }</option>
 
 										</c:forEach>
 									</select>
-
 								</div>
 
 
@@ -241,14 +363,14 @@ $(document).ready(function(){
 												<c:forEach items="${addr}" var="address">
 													<input type="text" class="form-control form-control-user"
 														name="address[]" placeholder="Enter street address"
-														value="${address.sAddress }">
+														value="${address.sAddress }" >
 												</c:forEach>
 											</div>
 											<div class="col-sm-6">
 												<c:forEach items="${addr}" var="address">
 													<input type="text" name="pin[]"
 														class="form-control form-control-user"
-														placeholder="Enter pincode" value="${ address.pincode }">
+														placeholder="Enter pincode" value="${ address.pincode }" >
 												</c:forEach>
 											</div>
 											<div class="col-sm-6 mb-3 mb-sm-0 pt-2">
@@ -296,12 +418,16 @@ $(document).ready(function(){
 										</div>
 									</div>
 								</div>
-								<input type="radio" value="female" name="gender"> <label>
-									Female</label> <input type="radio" value="male" name="gender">
-								<label> Male</label> <label>Hobbies</label> <input
+								<label>
+									Female</label>
+								<input type="radio" value="female" name="gender">  <br> 
+								<label> Male</label><input type="radio" value="male" name="gender"> <br> 
+								 <label>Hobbies</label> <br>
+								 <label> singing</label>
+								 <input
 									type="checkbox" id="sing" value="singing" name="checked">
-								<label> singing</label> <input type="checkbox" id="read"
-									value="reading" name="checked"> <label> reading</label>
+								 <br>  <label> reading</label><input type="checkbox" id="read"
+									value="reading" name="checked">
 
 								<!-- <div class="form-group">
 									<label>Photo:</label> <input type="file" id="img" name="image">
