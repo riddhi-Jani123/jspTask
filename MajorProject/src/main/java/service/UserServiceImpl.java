@@ -11,22 +11,22 @@ import dao.UserDaoImpl;
 import model.User;
 
 public class UserServiceImpl implements UserService{
-	UserDao l = null;
+	UserDao userDao = null;
 	public UserServiceImpl() throws ClassNotFoundException, SQLException{
 		
-	l = new UserDaoImpl();
+		userDao = new UserDaoImpl();
 	}
 
 	public boolean login(User u) {
 	
-		boolean res = l.login(u);
+		boolean res = userDao.login(u);
 		return res;
 	}
 
 	public int register(User u) throws  SQLException {
 		// TODO Auto-generated method stub
 		
-		int result =  l.register(u);
+		int result =  userDao.register(u);
 		return result;
 	}
 
@@ -35,35 +35,35 @@ public class UserServiceImpl implements UserService{
 		
 //		List<User>  list = new ArrayList<User>();
 		
-		 List<User> list = l.getUserName();
+		 List<User> list = userDao.getUserName();
 		
 		return list;
 	}
 
 	public int getId() {
 		// TODO Auto-generated method stub
-		int id = l.getId();
+		int id = userDao.getId();
 		return id;
 	}
 
 	public List<User> getData() {
 		// TODO Auto-generated method stub
 		
-		List<User> list = l.getData();
+		List<User> list = userDao.getData();
 		
 		return list;
 	}
 
 	public int updatePass(User user) {
 		// TODO Auto-generated method stub
-		int result = l.updatePass(user);
+		int result = userDao.updatePass(user);
 		return 0;
 	}
 
 	public List<User> viewAdmin(User user) {
 		// TODO Auto-generated method stub
 		
-		List<User> list = l.viewAdmin(user);
+		List<User> list = userDao.viewAdmin(user);
 		
 		return list;
 	}

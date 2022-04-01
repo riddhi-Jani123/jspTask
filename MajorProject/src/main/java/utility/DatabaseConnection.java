@@ -19,6 +19,7 @@ public class DatabaseConnection {
 	public static DatabaseConnection getInstance() {
 		return obj;
 	}
+	
 
 	public Connection getConnection() throws SQLException, ClassNotFoundException {
 		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/db", "root", "password");

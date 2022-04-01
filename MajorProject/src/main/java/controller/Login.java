@@ -1,9 +1,7 @@
 package controller;
 
 import java.io.IOException;
-import org.apache.log4j.BasicConfigurator;  
-import org.apache.log4j.LogManager;  
-import org.apache.log4j.Logger;  
+
 
 
 import java.io.PrintWriter;
@@ -27,7 +25,7 @@ import service.UserServiceImpl;
  */
 public class Login extends HttpServlet {
 	
-	private static final Logger logger = LogManager.getLogger(Login.class);  
+	
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -56,7 +54,7 @@ public class Login extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		System.out.println("in do  post");
+		
 		 
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
@@ -65,20 +63,19 @@ public class Login extends HttpServlet {
 		user.setUserEmail(request.getParameter("email"));
 		user.setUserPass(request.getParameter("password"));
 		
-		System.out.println("email "+user.getUserEmail());
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("email", request.getParameter("email"));		
 		try {
 			UserService u = new UserServiceImpl();
 			boolean result = u.login(user);
-			System.out.println("result "+ result );
+			
 			
 
 			if (result) {
 
 				if (user.isAdmin()) {
-					System.out.println("into admin page ");
+					
 					response.sendRedirect("adminDashboard.jsp");
 				
 				} else {

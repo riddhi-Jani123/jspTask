@@ -21,10 +21,10 @@ import utility.DatabaseConnection;
 
 public class UserDaoImpl implements UserDao{
 	
-	Connection conn =null;
+	Connection connection =null;
 	public UserDaoImpl() throws ClassNotFoundException, SQLException{
 		
-		conn = DatabaseConnection.getInstance().getConnection();
+		connection = DatabaseConnection.getInstance().getConnection();
 	}
 	
 	public boolean login(User u) {
@@ -33,13 +33,11 @@ public class UserDaoImpl implements UserDao{
 
 				
 					try {
-						PreparedStatement pstmt = conn
+						PreparedStatement pstmt = connection
 								.prepareStatement("select * from user where email = ? and password = ?");
 						pstmt.setString(1, u.getUserEmail());
 						pstmt.setString(2, u.getUserPass());
 						
-						System.out.println("email "+u.getUserEmail());
-						System.out.println("pass "+u.getUserPass());
 						ResultSet rs = pstmt.executeQuery();
 						
 					
@@ -66,7 +64,7 @@ public class UserDaoImpl implements UserDao{
 		/* Blob img= new SerialBlob(u.getImageData()); */// convert Byte array to BLOB using SerialBlob() method
 	      
 		try {
-			PreparedStatement pstmt = conn
+			PreparedStatement pstmt = connection
 					.prepareStatement("INSERT INTO user (fname, lname, email, password, gender,relationwith,hobby,mobile,isAdmin)\n"
 							+ "VALUES (?,?,?,?,?,?,?,?,0)");
 	
@@ -79,7 +77,6 @@ public class UserDaoImpl implements UserDao{
 				pstmt.setInt(6,u.getRelativeId()); 
 				pstmt.setString(7,u.getUserHobby()); 
 				pstmt.setString(8,u.getUserMobile());
-				System.out.println("first name" +u.getUserFName());
 				
 				/* pstmt.setBlob(8, u.getImageData()); */
 				
@@ -87,7 +84,7 @@ public class UserDaoImpl implements UserDao{
 				result = pstmt.executeUpdate();
 				
 				
-		 pstmt = conn
+		 pstmt = connection
 							.prepareStatement("select * from user ");
 					
 					ResultSet rs = pstmt.executeQuery();
@@ -114,7 +111,7 @@ public class UserDaoImpl implements UserDao{
 		List<User> list = new ArrayList<User>();
 		User user ;
 		try {
-			PreparedStatement pstmt = conn
+			PreparedStatement pstmt = connection
 					.prepareStatement("select * from user where isAdmin=0  ");
 			
 			ResultSet rs = pstmt.executeQuery();
@@ -146,7 +143,7 @@ public class UserDaoImpl implements UserDao{
 		
 		int id =0;
 		try {
-			PreparedStatement pstmt = conn
+			PreparedStatement pstmt = connection
 					.prepareStatement("select * from user ");
 			
 			ResultSet rs = pstmt.executeQuery();
@@ -172,7 +169,7 @@ public class UserDaoImpl implements UserDao{
 		List<User> list = new ArrayList<User>();
 		User user;
 		try {
-			PreparedStatement pstmt = conn
+			PreparedStatement pstmt = connection
 					.prepareStatement("select * from user");
 			
 			ResultSet rs = pstmt.executeQuery();
@@ -213,7 +210,7 @@ public class UserDaoImpl implements UserDao{
 		int result = 0;
 		
 		try {
-			PreparedStatement pstmt = conn.prepareStatement("UPDATE  user SET password=?  where email=? " );
+			PreparedStatement pstmt = connection.prepareStatement("UPDATE  user SET password=?  where email=? " );
 			
 			pstmt.setString(1, user.getUserPass());
 			pstmt.setString(2, user.getUserEmail());
@@ -236,7 +233,7 @@ public class UserDaoImpl implements UserDao{
 		List<User> list = new ArrayList<User>();
 		
 		try {
-			PreparedStatement pstmt = conn
+			PreparedStatement pstmt = connection
 					.prepareStatement("select * from user where email=? and isAdmin=1");
 			
 			pstmt.setString(1, user.getUserEmail());

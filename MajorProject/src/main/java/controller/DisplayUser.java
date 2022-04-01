@@ -48,8 +48,6 @@ public class DisplayUser extends HttpServlet {
 		try {
 			UserService user = new UserServiceImpl();
 			List<User> list = user.getData();
-			
-			System.out.println(list);
 			HttpSession session = request.getSession();
 			session.setAttribute("userList",list );
 			RequestDispatcher req = request.getRequestDispatcher("userTable.jsp");

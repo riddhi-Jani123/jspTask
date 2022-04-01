@@ -14,5 +14,6 @@ model/User.class
 dao/UserDao.class
 service/AddressService.class
 controller/ForgotPass.class
+filter/Validation.class
 dao/AddressDao.class
 controller/Register.class

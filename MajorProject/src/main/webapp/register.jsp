@@ -8,7 +8,53 @@
 
 <%= userId %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%
+ 	String fname=request.getParameter("firstName");
+	String lname = request.getParameter("lname");
+	String pass = request.getParameter("pass");
+	String cpass = request.getParameter("cpass");
+	String email = request.getParameter("email");
+ 	/* String email=request.getParameter("email");
+ 	String password=request.getParameter("password");
+ 	String mobile=request.getParameter("mobile"); */
+ 	if(fname!=null){
+ 		session.setAttribute("fname", fname);
+ 	}
+ 	
+ 	if(lname!=null){
+ 	
+ 		session.setAttribute("lname",lname);
+ 	}
+ 	
+ 	if(pass!=null){
+ 	
+ 		session.setAttribute("pass",pass);
+ 		
+ 	}
+ 	if(cpass!=null){
+ 		
+ 	
+ 		session.setAttribute("cpass",cpass);
+ 	}
+ 	
+ 	if(email!=null){
+ 		
+ 		session.setAttribute("email",email);	
+ 		
+ 	}
+ 	
+ 	
+ 	
+ 	/* if(email!=null){
+ 		session.setAttribute("email",email);
+ 	}
+ 	if(password!=null){
+ 		session.setAttribute("password",password);
+ 	}
+ 	if(mobile!=null){
+ 		session.setAttribute("mobile",mobile);
+ 	} */
+ %>
 
 <!DOCTYPE html>
 <html>
@@ -50,6 +96,11 @@ form.user .form-control-user{
 
 width:100%;
 }
+
+.validate-error{
+
+color:red;
+}
 </style>
 <!-- Custom fonts for this template-->
 <link href="assets/vendor/fontawesome-free/css/all.min.css"
@@ -74,13 +125,15 @@ $(document).ready(function(){
 		
 		
 		e.preventDefault();
+		
+		var  i =1; 
 	
 		$("#show_item").append(`
 				
 				<div id="rm[]" name="limit[]">
 				<div class="form-group row">
 					<div class="col-sm-6 mb-3 mb-sm-0">
-						<input type="text" class="form-control form-control-user"
+						<input type="text" class="address form-control form-control-user"
 							name="address[]"placeholder="Enter street address">
 					</div>
 					<div class="col-sm-6">
@@ -122,7 +175,7 @@ $(document).ready(function(){
 					</div>
 				</div>
 			</div>`);
-	
+	i++;
 		$(".remove_item").click(function(e){
 			
 			e.preventDefault();
@@ -148,7 +201,9 @@ $(document).ready(function(){
 		  }); 
 	
 	
-	 $("#form-validate").validate(
+	
+	$("#form-validate").validate(
+
 			 {
 				 
 				    rules: {
@@ -184,37 +239,17 @@ $(document).ready(function(){
 						  equalTo: '[name="pass"]'
 					  },
 					  
-					  "pin[]":{
-						  
-						  number:true
-					  },
-					  
 					  gender:{
 						  
 						  required:true
 					  },
+					
 					  checked:{
 						  
 						  required:true
 					  }
-				     /*  age: {
-				        required: true,
-				        number: true,
-				        min: 18
-				      },
-				      email: {
-				        required: true,
-				        email: true
-				      },
-				      weight: {
-				        required: {
-				          depends: function(elem) {
-				            return $("#age").val() > 50
-				          }
-				        },
-				        number: true,
-				        min: 0
-				      } */
+					  
+				   
 				    },
 				    messages : {
 				    	firstName: {
@@ -234,7 +269,7 @@ $(document).ready(function(){
 				      },
 				      mNo:{
 				    	  required:"Mobile Number is required", 
-				    	  number:"Only Number allowed"
+				    	  number:"Please enter valid mobile number"
 				    	 
 				    	  
 				      } ,
@@ -242,30 +277,16 @@ $(document).ready(function(){
 				    	  required:"Password is required", 
 				    	  minlegth:"Password should be atleast 8 character"
 				      },
-				      "pin[]":{
-				    	  
-				    	  number:"Please enter number only "
-				      },
+				      
 				      cpass:{
 				    	  
 				    	  required:"Confirm Password is required", 
 				    	  equalTo:"Password and Confirm Password must be same "
 				      }
-				     /*  age: {
-				        required: "Please enter your age",
-				        number: "Please enter your age as a numerical value",
-				        min: "You must be at least 18 years old"
-				      },
-				      email: {
-				        email: "The email should be in the format: abc@domain.tld"
-				      },
-				      weight: {
-				        required: "People with age over 50 have to enter their weight",
-				        number: "Please enter your weight as a numerical value"
-				      } */
 				    }
-				  });
-	 
+					
+				    });  
+				    	 
 });
 	 
 </script>
@@ -292,8 +313,9 @@ $(document).ready(function(){
 									
 										<input type="text" class="form-control form-control-user"
 											id="exampleFirstName" name="firstName"
-											placeholder="First Name" >
+											placeholder="First Name" value="${fname}">
 											
+											<span  class="validate-error"> ${message.fname}</span>
 											
 											
 									<!-- 	<wl:validator fieldToValidate="firstName"
@@ -306,33 +328,38 @@ $(document).ready(function(){
 									<div class="col-sm-6">
 										<input type="text" class="form-control form-control-user"
 											id="exampleLastName" name="lname" placeholder="Last Name" >
-											<!-- <small id="lname" > Last name is required  </small> -->
+										<span> ${message.lname}</span> 
+											
 									</div>
 								</div>
 								<div class="form-group">
 									<input type="email" class="form-control form-control-user"
 										id="exampleInputEmail" name="email"
 										placeholder="Email Address" >
-										<!-- <small id="email" > Email is required  </small> -->
+										<span> ${message.email}</span> 
+
 								</div>
 								<div class="form-group">
 
 									<input type="tel" class="form-control form-control-user"
 										id="mNo" name="mNo" placeholder="mobile no" >
-										<!-- <small id="mobile" > Mobile Number is required  </small> -->
+									<span> ${message.mNo}</span> 
+										
 
 								</div>
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="password" class="form-control form-control-user"
 											id="exampleInputPassword" name="pass" placeholder="Password">
+											<span> ${message.pass}</span>
 											<!-- <small id="pass" > Password  is required  </small> -->
 									</div>
 									<div class="col-sm-6">
 										<input type="password" class="form-control form-control-user"
 											id="exampleRepeatPassword" name="cpass"
 											placeholder="Confirm Password">
-											<!-- <small id="cpass" > Confirm Password is required  </small> -->
+											<span> ${message.cpass}</span>
+											
 									</div>
 								</div>
 
@@ -361,7 +388,7 @@ $(document).ready(function(){
 										<div class="form-group row">
 											<div class="col-sm-6 mb-3 mb-sm-0">
 												<c:forEach items="${addr}" var="address">
-													<input type="text" class="form-control form-control-user"
+													<input type="text" class="address form-control form-control-user"
 														name="address[]" placeholder="Enter street address"
 														value="${address.sAddress }" >
 												</c:forEach>

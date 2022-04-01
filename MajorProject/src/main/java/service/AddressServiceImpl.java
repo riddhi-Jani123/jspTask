@@ -11,13 +11,13 @@ import model.User;
 
 public class AddressServiceImpl implements AddressService{
 	
-	AddressDao l = null;
+	AddressDao addressDao = null;
 	
 	public AddressServiceImpl() {
 		
 		
 		try {
-			l = new AddressDaoImpl();
+			addressDao = new AddressDaoImpl();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -30,7 +30,7 @@ public class AddressServiceImpl implements AddressService{
 	public int addData(int id, Address a) throws SQLException {
 		// TODO Auto-generated method stub
 		
-		int result = l.addData(id, a);
+		int result = addressDao.addData(id, a);
 		return result;
 	}
 
@@ -38,26 +38,26 @@ public class AddressServiceImpl implements AddressService{
 	public List<Address> getData(int id) {
 		// TODO Auto-generated method stub
 		
-		List<Address> list = l.getData(id);
+		List<Address> list = addressDao.getData(id);
 		return list;
 	}
 
 	public int updateData(int id, Address a) throws SQLException {
 		// TODO Auto-generated method stub
-		int result = l.update(id, a);
+		int result = addressDao.update(id, a);
 		return result;
 	}
 
 	public List<Address> getId() {
 		// TODO Auto-generated method stub
 		
-		List<Address> list = l.getId();
+		List<Address> list = addressDao.getId();
 		return list;
 	}
 
 	public int addAddress(int id, Address a) throws SQLException {
 		// TODO Auto-generated method stub
-		int result = l.addAddress(id, a);
+		int result = addressDao.addAddress(id, a);
 		return result;
 	}
 

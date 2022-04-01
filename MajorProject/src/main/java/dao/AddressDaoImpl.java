@@ -15,10 +15,10 @@ import utility.DatabaseConnection;
 
 public class AddressDaoImpl implements AddressDao {
 	
-	Connection conn =null;
+	Connection connection =null;
 	public AddressDaoImpl() throws ClassNotFoundException, SQLException{
 		
-		conn = DatabaseConnection.getInstance().getConnection();
+		connection = DatabaseConnection.getInstance().getConnection();
 	}
 	
 	
@@ -28,7 +28,6 @@ public class AddressDaoImpl implements AddressDao {
 		
 		int result =0;
 		int addID =  a.getAddressId();
-		System.out.println("address id " + addID);
 		int n = a.getLength();
 		
 		System.out.println("length "+n);
@@ -36,13 +35,10 @@ public class AddressDaoImpl implements AddressDao {
 		for (int i=1;i<n;i++)
 		{
 			
-		PreparedStatement pstmt = conn
+		PreparedStatement pstmt = connection
 				.prepareStatement("Insert Into  Address (address, city, state, pincode,addressType,userID)"
 										+ "VALUES (?,?,?,?,?,?)" );
 				
-	
-	
-		System.out.println("addr " + a.getAddressType());
 	
 			try {
 			
@@ -78,7 +74,6 @@ public class AddressDaoImpl implements AddressDao {
 				
 				result = pstmt.executeUpdate();
 				
-				System.out.println(result);
 		
 
 				
@@ -104,7 +99,7 @@ public class AddressDaoImpl implements AddressDao {
 		
 		
 		try {
-			PreparedStatement pstmt = conn
+			PreparedStatement pstmt = connection
 					.prepareStatement("select * from Address where userID=?");
 			
 			pstmt.setInt(1,id);
@@ -157,18 +152,14 @@ public class AddressDaoImpl implements AddressDao {
 		
 		int result =0;
 		int addID =  a.getAddressId();
-		System.out.println("address id " + addID);
 		
 		int n = a.getLength();
 
 				
 		
-		PreparedStatement pstmt = conn
+		PreparedStatement pstmt = connection
 				.prepareStatement("UPDATE  Address SET address=?, city=?, state=?, pincode=?,addressType=? where userID =? and addressID =?" );
 				
-	
-	
-			System.out.println("addr " + a.getAddressType());
 	
 			try {
 			
@@ -177,20 +168,17 @@ public class AddressDaoImpl implements AddressDao {
 				 
 		     	            
 				pstmt.setString(1,arrOfStr[0]);
-				System.out.println("street address"+ arrOfStr[0] );
 		        
 		        String str1 = a.getCity();
 				String[] arrOfStr1 = str1.split(" ");
 				
 		        
 				pstmt.setString(2, arrOfStr1[0]);
-				System.out.println("city"+ arrOfStr1[0] );
 				 
 		        
 		        String str2 = a.getState();
 				String[] arrOfStr2 = str2.split(" ");
 				pstmt.setString(3, arrOfStr2[0]);
-				System.out.println("state"+ arrOfStr2[0] );
 				 
 		     
 		        String str3 = a.getPincode();
@@ -200,19 +188,14 @@ public class AddressDaoImpl implements AddressDao {
 		        
 				
 				pstmt.setString(4, arrOfStr3[0]);
-				System.out.println("pin "+ arrOfStr3[0] );
-		        
 		        
 				
 				 String str4 = a.getAddressType(); 
 				 String[] arrOfStr4 = str4.split(" ");
 				 
 				pstmt.setString(5, arrOfStr4[0]);
-				System.out.println("address type "+ arrOfStr3[0] );
 				pstmt.setInt(6, id);
-				System.out.println("id"+ id );
 				pstmt.setInt(7, addID);
-				System.out.println("addId"+  addID);
 				result = pstmt.executeUpdate();
 				
 			} catch (SQLException e) {
@@ -236,7 +219,7 @@ public class AddressDaoImpl implements AddressDao {
 
 			PreparedStatement pstmt;
 			try {
-				pstmt = conn
+				pstmt = connection
 						.prepareStatement("select addressID from Address ");
 				ResultSet rs = pstmt.executeQuery();
 				
@@ -265,21 +248,16 @@ public class AddressDaoImpl implements AddressDao {
 		// TODO Auto-generated method stub
 		int result =0;
 		int addID =  a.getAddressId();
-		System.out.println("address id " + addID);
 		int n = a.getLength();
-		
-		System.out.println("length "+n);
 		
 		for (int i=0;i<n;i++)
 		{
 			
-		PreparedStatement pstmt = conn
+		PreparedStatement pstmt = connection
 				.prepareStatement("Insert Into  Address (address, city, state, pincode,addressType,userID)"
 										+ "VALUES (?,?,?,?,?,?)" );
 				
-	
-	
-		System.out.println("addr " + a.getAddressType());
+
 	
 			try {
 			
@@ -315,7 +293,6 @@ public class AddressDaoImpl implements AddressDao {
 				
 				result = pstmt.executeUpdate();
 				
-				System.out.println(result);
 		
 
 				

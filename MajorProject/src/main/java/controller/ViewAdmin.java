@@ -53,7 +53,7 @@ public class ViewAdmin extends HttpServlet {
 		
 		
 		try {
-			UserService u = new UserServiceImpl();
+			UserService userService = new UserServiceImpl();
 			
 			List<User> list  = u.viewAdmin(user);
 			

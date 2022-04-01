@@ -68,4 +68,13 @@
     <servlet-name>ViewAdmin</servlet-name>
     <url-pattern>/ViewAdmin</url-pattern>
   </servlet-mapping>
+<!--   <filter>
+    <display-name>Validation</display-name>
+    <filter-name>Validation</filter-name>
+    <filter-class>filter.Validation</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>Validation</filter-name>
+    <url-pattern>/Register</url-pattern>
+  </filter-mapping> -->
 </web-app>
